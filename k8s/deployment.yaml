@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeployment  # Name of the deployment
+  labels:
+    app: mytesting            # Label to identify the app
+spec:
+  replicas: 4             # Number of pod replicas
+  selector:
+    matchLabels:
+      app: mytesting          # Label selector to match pods
+  template:               # Template to define the pod spec
+    metadata:
+      labels:
+        app: mytesting        # Label assigned to the pod
+    spec:
+      containers:
+      - name: testingcontainer       # Container name
+        image: ajayksaini/flask_app:latest  # Image to use 
+        ports:
+        - containerPort: 80  # Port the container exposes
+
